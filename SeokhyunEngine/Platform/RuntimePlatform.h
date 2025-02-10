@@ -220,9 +220,9 @@ namespace RuntimeInfo
 
 
     /// exception
-    #if (PLATFORM_INFO == PLATFORM_UNKNOWN)
-        throw new std::runtime_error();
-    #endif
+    // #if (PLATFORM_INFO == PLATFORM_UNKNOWN)
+    //     throw new std::runtime_error();
+    // #endif
 };
 
 #endif //__RUNTIMEINFO_H__

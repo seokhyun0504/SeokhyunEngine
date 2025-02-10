@@ -8,20 +8,46 @@ if (APPLE)
 
     set(CMAKE_OSX_ARCHITECTURES arm64)
     enable_language(OBJCXX)
-endif()
 
+    set(SEOKHYUNENGINE_PLATFORM
+        SeokhyunEngine/Platform/macOS/macOSAppLauncher.cpp SeokhyunEngine/Platform/macOS/macOSAppLauncher.h
+        SeokhyunEngine/Platform/macOS/macOSWindow.mm SeokhyunEngine/Platform/macOS/macOSWindow.h
+    )
+
+elseif (WIN32)
+    set(SEOKHYUNENGINE_PLATFORM
+            SeokhyunEngine/Platform/Windows/WindowsAppLauncher.cpp SeokhyunEngine/Platform/Windows/WindowsAppLauncher.h
+            SeokhyunEngine/Platform/Windows/WindowsWindow.cpp SeokhyunEngine/Platform/Windows/WindowsWindow.h
+    )
+
+endif ()
 
 project(${PROJECT_NAME})
 add_executable(${PROJECT_NAME}
-    src/main.cpp
-    src/common.h src/RuntimePlatform.h
 
-    src/Platform/Window.mm src/Platform/Window.h
+        SampleAppTest/main.cpp
+        SampleAppTest/SampleApp.cpp SampleAppTest/SampleApp.h
 
-    src/Utility/Resolution.h
+        SeokhyunEngine/Configuration/WindowMode.h
+
+        SeokhyunEngine/Math/AABB.cpp SeokhyunEngine/Math/AABB.h
+
+        SeokhyunEngine/SeokhyunEngine.h SeokhyunEngine/common.h
+        SeokhyunEngine/Launcher.h SeokhyunEngine/Launcher.cpp
+        SeokhyunEngine/Application.cpp SeokhyunEngine/Application.h
+
+        SeokhyunEngine/Platform/AppLauncher.cpp SeokhyunEngine/Platform/AppLauncher.h
+        SeokhyunEngine/Platform/Window.cpp SeokhyunEngine/Platform/Window.h
+        SeokhyunEngine/Platform/WindowHandler.cpp SeokhyunEngine/Platform/WindowHandler.h
+        SeokhyunEngine/Platform/RuntimePlatform.h
+
+        ${SEOKHYUNENGINE_PLATFORM}
+
+        SeokhyunEngine/Utility/Resolution.h
 )
 
-target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_SOURCE_DIR}/src)       # src 전체를 포함
+target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_SOURCE_DIR}/SeokhyunEngine)       # SeokhyunEngine 전체를 포함
+target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_SOURCE_DIR}/SampleApp)
 
 include(Dependency.cmake)
 
