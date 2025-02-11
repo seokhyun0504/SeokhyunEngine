@@ -38,6 +38,11 @@ public:
 
 
     // ───────────── GETTER & SETTER ────────────
+
+    /**
+     * @brief A function that automatically sets which monitor a window is positioned on.
+     * @warning This has not been tested on multiple monitors.
+     */
     void setMonitor()                   override;
     void setMonitor(unsigned int index) override;
 

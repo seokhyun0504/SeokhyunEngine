@@ -1,3 +1,4 @@
+#include <vector>
 #include "WindowsWindow.h"
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -150,10 +151,13 @@ void WindowsWindow::setWindowed()
 {
     Window::setWindowed();
 
-    m_windowedPos = m_position; m_windowedSize = m_resolution;
-
     setResizable(m_resizable);
+
+    glfwSetWindowAttrib(m_handle, GLFW_DECORATED, GLFW_TRUE);
     glfwSetWindowMonitor(m_handle, nullptr, m_windowedPos.x, m_windowedPos.y, m_windowedSize.x, m_windowedSize.y, 0);
+
+    m_position = m_windowedPos;
+    m_resolution = m_windowedSize;
 
     m_windowMode = WindowMode::Windowed;
 }
@@ -162,9 +166,34 @@ void WindowsWindow::setBorderless()
 {
     Window::setBorderless();
 
-    m_windowedPos = m_position; m_windowedSize = m_resolution;
+    setMonitor();
+    if (m_windowMode == WindowMode::Windowed)
+    {
+        m_windowedPos  = m_position;
+        m_windowedSize = m_resolution;
+    }
 
-    // todo: windows 에서 테두리 없는 창 구현하기
+    int monitorPosX, monitorPosY;
+    glfwGetMonitorPos(m_monitor, &monitorPosX, &monitorPosY);
+
+    const GLFWvidmode *mode = glfwGetVideoMode(m_monitor);
+
+    glfwSetWindowPos(m_handle, monitorPosX, monitorPosY);
+    glfwSetWindowSize(m_handle, mode->width, mode->height);
+
+    glfwSetWindowAttrib(m_handle, GLFW_DECORATED, GLFW_FALSE);
+
+
+    HWND hWnd = glfwGetWin32Window(m_handle);
+    if (hWnd)
+    {
+        LONG style = GetWindowLong(hWnd, GWL_STYLE);
+
+        style &= ~(WS_OVERLAPPEDWINDOW);
+        SetWindowLong(hWnd, GWL_STYLE, style);
+
+        SetWindowPos(hWnd, nullptr, monitorPosX, monitorPosY, mode->width, mode->height, SWP_FRAMECHANGED | SWP_NOZORDER);
+    }
 
     m_windowMode = WindowMode::Borderless;
 }
@@ -173,9 +202,13 @@ void WindowsWindow::setFullScreen()
 {
     Window::setFullScreen();
 
-    m_windowedPos = m_position; m_windowedSize = m_resolution;
-
     setMonitor();
+    if (m_windowMode == WindowMode::Windowed)
+    {
+        m_windowedPos  = m_position;
+        m_windowedSize = m_resolution;
+    }
+
     glfwSetWindowAttrib(m_handle, GLFW_RESIZABLE, GLFW_FALSE);
 
     const GLFWvidmode *mode = glfwGetVideoMode(m_monitor);
@@ -188,12 +221,35 @@ void WindowsWindow::setFullScreen()
 // ─────────────────────────────────────────────────────────────────────────────
 //                                GETTER & SETTER
 // ─────────────────────────────────────────────────────────────────────────────
-
 void WindowsWindow::setMonitor()
 {
-    unsigned int monitorIndex = 0;
+    unsigned int monitorIndex = -1;
 
-    // todo: 현재 윈도우가 어떤 모니터에 있는지 확인하는 코드 작성하기
+    HWND hwnd = getWin32Window();
+    HMONITOR targetMonitor = MonitorFromWindow(hwnd, MONITOR_DEFAULTTONEAREST);
+
+    std::vector<HMONITOR> hmonitors;
+    EnumDisplayMonitors
+    (
+        nullptr,
+        nullptr,
+        [] (HMONITOR hMonitor, HDC, LPRECT, LPARAM lParam)
+        {
+            auto monitors = reinterpret_cast<std::vector<HMONITOR>*>(lParam);
+            monitors->push_back(hMonitor);
+            return TRUE;
+        },
+        reinterpret_cast<LPARAM>(&hmonitors)
+    );
+
+    for (unsigned int i = 0; i < hmonitors.size(); ++i)
+    {
+        if (hmonitors[i] == targetMonitor)
+        {
+            monitorIndex = i;
+            break;
+        }
+    }
 
     setMonitor(monitorIndex);
 }

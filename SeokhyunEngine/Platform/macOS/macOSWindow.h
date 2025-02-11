@@ -37,6 +37,11 @@ public:
     bool Close()  override;
 
     void setWindowed()   override;
+
+    /**
+     * @brief Maximize the macOS window instead of switching to Boderless.
+     * @warning There is a bug where input is ignored once when executing the function with a designated key.
+     */
     void setBorderless() override;
     void setFullScreen() override;
 
