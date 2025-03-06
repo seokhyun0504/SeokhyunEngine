@@ -8,7 +8,6 @@
 #include "WindowHandler.h"
 #include "Utility/Resolution.h"
 
-
 /**
  * @class Window
  * @brief GLFW-based cross-platform windows for SeokhyunEngine
@@ -27,7 +26,7 @@ protected:
 
     WindowMode m_windowMode     { WindowMode::Windowed };
 
-    std::string m_title         { "SeokyunEngine" };
+    std::string m_title         /* { "SeokyunEngine" } */ ;
 
     float m_opacity             { 1.0f };
 
@@ -44,21 +43,21 @@ protected:
 
 
     // ───────────── GLFW CALLBACKS ─────────────
-    virtual void onGLFWError                (int error, const char* description);
+    virtual void OnGLFWError                (int error, const char* description);
 
-    virtual void onMouse                    (GLFWwindow *window, int button, int action, int mods);
-    virtual void onMouseMove                (GLFWwindow *window, double xoffset, double yoffset);
-    virtual void onScroll                   (GLFWwindow *window, double xoffset, double yoffset);
-    virtual void onKey                      (GLFWwindow *window, int key, int scancode, int action, int mods);
-    virtual void onChar                     (GLFWwindow *window, unsigned int codepoint);
+    virtual void OnMouse                    (GLFWwindow *window, int button, int action, int mods);
+    virtual void OnMouseMove                (GLFWwindow *window, double xoffset, double yoffset);
+    virtual void OnScroll                   (GLFWwindow *window, double xoffset, double yoffset);
+    virtual void OnKey                      (GLFWwindow *window, int key, int scancode, int action, int mods);
+    virtual void OnChar                     (GLFWwindow *window, unsigned int codepoint);
 
-    virtual void onWindowPos                (GLFWwindow *window, int x, int y);
-    virtual void onWindowSize               (GLFWwindow *window, int width, int height);
-    virtual void onWindowFramebufferSize    (GLFWwindow *window, int width, int height);
-    virtual void onWindowScale              (GLFWwindow *window, float xscale, float yscale);
-    virtual void onWindowFocus              (GLFWwindow *window, int focused);
-    virtual void onWindowRefresh            (GLFWwindow *window);
-    virtual void onWindowClose              (GLFWwindow *window);
+    virtual void OnWindowPos                (GLFWwindow *window, int x, int y);
+    virtual void OnWindowSize               (GLFWwindow *window, int width, int height);
+    virtual void OnWindowFramebufferSize    (GLFWwindow *window, int width, int height);
+    virtual void OnWindowScale              (GLFWwindow *window, float xscale, float yscale);
+    virtual void OnWindowFocus              (GLFWwindow *window, int focused);
+    virtual void OnWindowRefresh            (GLFWwindow *window);
+    virtual void OnWindowClose              (GLFWwindow *window);
 
 
     // ──────────── WINDOW FUNCTIONS ───────────
@@ -69,7 +68,7 @@ public:
     virtual bool Update();
     virtual bool Close();
 
-    virtual void pollEvents();
+    virtual void swapBuffers();
     virtual bool windowShouldClose();
 
     virtual void setWindowed();

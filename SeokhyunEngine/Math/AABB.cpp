@@ -156,9 +156,9 @@ AABB<T, N> AABB<T, N>::operator & (const AABB& rhs) const
     return intersection(rhs);
 }
 
-template class AABB<float, 2>;
-template class AABB<float, 3>;
-template class AABB<double, 2>;
-template class AABB<double, 3>;
-template class AABB<int, 2>;
-template class AABB<int, 3>;
+template struct AABB<float, 2>;
+template struct AABB<float, 3>;
+template struct AABB<double, 2>;
+template struct AABB<double, 3>;
+template struct AABB<int, 2>;
+template struct AABB<int, 3>;

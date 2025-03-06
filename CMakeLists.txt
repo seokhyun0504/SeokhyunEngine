@@ -43,6 +43,14 @@ add_executable(${PROJECT_NAME}
 
         ${SEOKHYUNENGINE_PLATFORM}
 
+        SeokhyunEngine/Renderer/OpenGL/Buffer.cpp SeokhyunEngine/Renderer/OpenGL/Buffer.h
+        SeokhyunEngine/Renderer/OpenGL/Mesh.h SeokhyunEngine/Renderer/OpenGL/Mesh.cpp
+        SeokhyunEngine/Renderer/OpenGL/Program.cpp SeokhyunEngine/Renderer/OpenGL/Program.h
+        SeokhyunEngine/Renderer/OpenGL/Shader.cpp SeokhyunEngine/Renderer/OpenGL/Shader.h
+        SeokhyunEngine/Renderer/OpenGL/Texture.cpp SeokhyunEngine/Renderer/OpenGL/Texture.h
+        SeokhyunEngine/Renderer/OpenGL/VertexArray.cpp SeokhyunEngine/Renderer/OpenGL/VertexArray.h
+
+        SeokhyunEngine/Utility/FileReader.h
         SeokhyunEngine/Utility/Resolution.h
 )
 

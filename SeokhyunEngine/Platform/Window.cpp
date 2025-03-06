@@ -39,27 +39,27 @@ Window::~Window()
 //                         GLFW & Window Callbacks
 // ───────────────────────────────────────────────────────────────────────────
 
-void Window::onGLFWError(int error, const char* description)
+void Window::OnGLFWError(int error, const char* description)
 {
 
 }
 
-void Window::onMouse(GLFWwindow *window, int button, int action, int mods)
+void Window::OnMouse(GLFWwindow *window, int button, int action, int mods)
 {
 
 }
 
-void Window::onMouseMove(GLFWwindow *window, double xoffset, double yoffset)
+void Window::OnMouseMove(GLFWwindow *window, double xoffset, double yoffset)
 {
 
 }
 
-void Window::onScroll(GLFWwindow *window, double xoffset, double yoffset)
+void Window::OnScroll(GLFWwindow *window, double xoffset, double yoffset)
 {
 
 }
 
-void Window::onKey(GLFWwindow *window, int key, int scancode, int action, int mods)
+void Window::OnKey(GLFWwindow *window, int key, int scancode, int action, int mods)
 {
     if (key == GLFW_KEY_ESCAPE && action == GLFW_RELEASE)
     {
@@ -89,46 +89,44 @@ void Window::onKey(GLFWwindow *window, int key, int scancode, int action, int mo
     }
 }
 
-void Window::onChar(GLFWwindow *window, unsigned int codepoint)
+void Window::OnChar(GLFWwindow *window, unsigned int codepoint)
 {
 
 }
 
-void Window::onWindowPos(GLFWwindow *window, int x, int y)
+void Window::OnWindowPos(GLFWwindow *window, int x, int y)
 {
     if (m_windowMode == WindowMode::Windowed) m_position.x = x; m_position.y = y;
 }
 
-void Window::onWindowSize(GLFWwindow *window, int width, int height)
+void Window::OnWindowSize(GLFWwindow *window, int width, int height)
 {
     m_resolution.x = width; m_resolution.y = height;
 }
 
-void Window::onWindowFramebufferSize(GLFWwindow *window, int width, int height)
+void Window::OnWindowFramebufferSize(GLFWwindow *window, int width, int height)
 {
     glViewport(0, 0, width, height);
 }
 
-void Window::onWindowScale(GLFWwindow *window, float xscale, float yscale)
+void Window::OnWindowScale(GLFWwindow *window, float xscale, float yscale)
 {
     m_scale.x = xscale; m_scale.y = yscale;
 }
 
-void Window::onWindowFocus(GLFWwindow *window, int focused)
+void Window::OnWindowFocus(GLFWwindow *window, int focused)
 {
     m_focused = focused;
 }
 
-void Window::onWindowRefresh(GLFWwindow *window)
+void Window::OnWindowRefresh(GLFWwindow *window)
 {
-    Update();
+    this->Update();
     glfwSwapBuffers(window);
-
-    glFinish();
 }
 
 
-void Window::onWindowClose(GLFWwindow *window)
+void Window::OnWindowClose(GLFWwindow *window)
 {
     std::cout << "[INFO] Closing Window..." << std::endl;
     glfwSetWindowShouldClose(window, GLFW_TRUE);
@@ -178,9 +176,9 @@ bool Window::Close()
     return true;
 }
 
-void Window::pollEvents()
+void Window::swapBuffers()
 {
-    glfwPollEvents();
+    glfwSwapBuffers(m_handle);
 }
 
 bool Window::windowShouldClose()

@@ -9,7 +9,7 @@ class WindowsAppLauncher : public AppLauncher
 
 private:
 
-    WindowsWindow* createWindow() override;
+    WindowsWindow* createWindow(std::string &appName) override;
 
 
 public:

@@ -8,7 +8,6 @@
 #include "Application.h"
 #include "Platform/Window.h"
 
-
 class Window;
 
 class AppLauncher
@@ -18,7 +17,7 @@ private:
 
     Window *m_window;
 
-    virtual Window* createWindow() = 0; // 운영체제마다 다름
+    virtual Window* createWindow(std::string &appName) = 0;
     bool setWindow(std::string appName); // todo: 설정 관련 기능이 생길 경우 관련 클래스 인자를 받아 window 생성
 
 

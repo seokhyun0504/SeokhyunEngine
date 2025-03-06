@@ -13,7 +13,7 @@ AppLauncher::~AppLauncher()
 
 bool AppLauncher::setWindow(std::string appName) // todo: .settings 관련 기능이 생길 경우 인자를 받아 window 생성
 {
-    m_window = createWindow();
+    m_window = createWindow(appName);
 
     if (!m_window)
     {
@@ -30,10 +30,14 @@ int AppLauncher::run(Application *app)
 {
     if (!setWindow(app->getName())) return -1;
 
+    app->OnInit();
+
     while (!m_window->windowShouldClose())
     {
         m_window->Update();
-        m_window->pollEvents();
+        app->OnUpdate();
+
+        m_window->swapBuffers();
     }
 
     m_window->Close();

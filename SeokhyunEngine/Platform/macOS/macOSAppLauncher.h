@@ -9,7 +9,7 @@ class macOSAppLauncher : public AppLauncher
 
 private:
 
-    macOSWindow* createWindow() override;
+    macOSWindow* createWindow(std::string &appName) override;
 
 
 public:

@@ -11,7 +11,7 @@ macOSAppLauncher::~macOSAppLauncher()
 }
 
 
-macOSWindow* macOSAppLauncher::createWindow()
+macOSWindow* macOSAppLauncher::createWindow(std::string &appName)
 {
-    return macOSWindow::Create();
+    return macOSWindow::Create(appName);
 }

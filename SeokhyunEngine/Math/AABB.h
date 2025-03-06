@@ -17,7 +17,7 @@
  *   - Represents an AABB using `min` and `max` vectors, with flexibility provided by template parameters.
  */
 template <typename T, glm::length_t N>
-class AABB
+struct AABB
 {
 
 public:
@@ -143,4 +143,4 @@ typedef AABB<int, 2> AABB2i;
 typedef AABB<int, 3> AABB3i;
 
 
-#endif // __AABB_H__
+#endif //__AABB_H__

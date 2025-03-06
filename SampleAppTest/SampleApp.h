@@ -6,10 +6,18 @@
 class SampleApp : public Application
 {
 
+private:
+
+    Mesh* m_mesh;
+    Program* m_program;
+
 public:
 
     SampleApp();
     ~SampleApp() override;
+
+    void OnInit() override;
+    void OnUpdate() override;
 };
 
 

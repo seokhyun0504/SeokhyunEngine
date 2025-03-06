@@ -1,6 +1,6 @@
 #include "Application.h"
 
-Application::Application(const std::string& name, const std::string& version) : m_name("SeokhyunEngine"), m_version("1.0")
+Application::Application(const std::string& name, const std::string& version) : m_name(name), m_version(version)
 {
 
 }
@@ -10,22 +10,22 @@ Application::~Application()
 
 }
 
-void Application::onInit()
+void Application::OnInit()
 {
 
 }
 
-void Application::onUpdate()
+void Application::OnUpdate()
 {
 
 }
 
-void Application::onRender()
+void Application::OnRender()
 {
 
 }
 
-void Application::onShutdown()
+void Application::OnShutdown()
 {
 
 }

@@ -9,6 +9,7 @@
  */
 class Application
 {
+
 private:
 
     std::string m_name;
@@ -20,14 +21,14 @@ public:
     virtual ~Application();
 
 
-    const std::string& getName() const    { return m_name; }
-    const std::string& getVersion() const { return m_version; }
+    const std::string getName() const    { return m_name; }
+    const std::string getVersion() const { return m_version; }
 
 
-    virtual void onInit();
-    virtual void onUpdate();
-    virtual void onRender();
-    virtual void onShutdown();
+    virtual void OnInit();
+    virtual void OnUpdate();
+    virtual void OnRender();
+    virtual void OnShutdown();
 };
 
 #endif //__APPLICATION_H__

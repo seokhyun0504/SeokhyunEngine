@@ -11,7 +11,7 @@ WindowsAppLauncher::~WindowsAppLauncher()
 }
 
 
-WindowsWindow* WindowsAppLauncher::createWindow()
+WindowsWindow* WindowsAppLauncher::createWindow(std::string &appName)
 {
-    return WindowsWindow::Create();
+    return WindowsWindow::Create(appName);
 }

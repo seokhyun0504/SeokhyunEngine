@@ -21,77 +21,77 @@ void WindowHandler::setWindowInstance(Window* instance)
 void WindowHandler::GLFWError(int error, const char* description)
 {
     if (s_instance)
-        s_instance->onGLFWError(error, description);
+        s_instance->OnGLFWError(error, description);
 }
 
 void WindowHandler::GLFWMouseCallback(GLFWwindow* window, int button, int action, int mods)
 {
     if (s_instance)
-        s_instance->onMouse(window, button, action, mods);
+        s_instance->OnMouse(window, button, action, mods);
 }
 
 void WindowHandler::GLFWMouseMovementCallback(GLFWwindow* window, double xoffset, double yoffset)
 {
     if (s_instance)
-        s_instance->onMouseMove(window, xoffset, yoffset);
+        s_instance->OnMouseMove(window, xoffset, yoffset);
 }
 
 void WindowHandler::GLFWMouseScrollCallback(GLFWwindow* window, double xoffset, double yoffset)
 {
     if (s_instance)
-        s_instance->onScroll(window, xoffset, yoffset);
+        s_instance->OnScroll(window, xoffset, yoffset);
 }
 
 void WindowHandler::GLFWKeyCallback(GLFWwindow* window, int key, int scancode, int action, int mods)
 {
     if (s_instance)
-        s_instance->onKey(window, key, scancode, action, mods);
+        s_instance->OnKey(window, key, scancode, action, mods);
 }
 
 void WindowHandler::GLFWCharCallback(GLFWwindow* window, unsigned int codepoint)
 {
     if (s_instance)
-        s_instance->onChar(window, codepoint);
+        s_instance->OnChar(window, codepoint);
 }
 
 void WindowHandler::GLFWWindowPosCallback(GLFWwindow* window, int x, int y)
 {
     if (s_instance)
-        s_instance->onWindowPos(window, x, y);
+        s_instance->OnWindowPos(window, x, y);
 }
 
 void WindowHandler::GLFWWindowSizeCallback(GLFWwindow* window, int width, int height)
 {
     if (s_instance)
-        s_instance->onWindowSize(window, width, height);
+        s_instance->OnWindowSize(window, width, height);
 }
 
 void WindowHandler::GLFWWindowFramebufferSizeCallback(GLFWwindow* window, int width, int height)
 {
     if (s_instance)
-        s_instance->onWindowFramebufferSize(window, width, height);
+        s_instance->OnWindowFramebufferSize(window, width, height);
 }
 
 void WindowHandler::GLFWWindowScaleCallback(GLFWwindow* window, float xscale, float yscale)
 {
     if (s_instance)
-        s_instance->onWindowScale(window, xscale, yscale);
+        s_instance->OnWindowScale(window, xscale, yscale);
 }
 
 void WindowHandler::GLFWWindowFocusCallback(GLFWwindow* window, int focused)
 {
     if (s_instance)
-        s_instance->onWindowFocus(window, focused);
+        s_instance->OnWindowFocus(window, focused);
 }
 
 void WindowHandler::GLFWWindowRefreshCallback(GLFWwindow* window)
 {
     if (s_instance)
-        s_instance->onWindowRefresh(window);
+        s_instance->OnWindowRefresh(window);
 }
 
 void WindowHandler::GLFWWindowCloseCallback(GLFWwindow* window)
 {
     if (s_instance)
-        s_instance->onWindowClose(window);
+        s_instance->OnWindowClose(window);
 }

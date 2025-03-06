@@ -6,7 +6,6 @@
 #include "Platform/Window.h"
 #include "Platform/WindowHandler.h"
 
-
 class macOSWindow : public Window
 {
 

@@ -3,6 +3,10 @@
 
 #include "common.h"
 
+/**
+ * @brief Collection of Standard Resolutions
+ * @tag PreDefinations
+ */
 namespace Resolution
 {
     static const glm::ivec2 VGA       { glm::ivec2(640, 480) };

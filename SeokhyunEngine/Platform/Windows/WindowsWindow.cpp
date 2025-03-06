@@ -134,9 +134,6 @@ bool WindowsWindow::Update()
     glEnable(GL_DEPTH_TEST);
     glEnable(GL_BLEND);
 
-    glClearColor(0.2f, 0.1f, 0.3f, 1.0f);
-
-
     glfwSwapBuffers(m_handle);
 
     return !glfwWindowShouldClose(m_handle);

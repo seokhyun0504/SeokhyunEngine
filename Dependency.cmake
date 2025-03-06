@@ -62,3 +62,20 @@ ExternalProject_Add(
         ${DEP_INSTALL_DIR}/include/glm
     )
 set(DEP_LIST ${DEP_LIST} dep_glm)
+
+# stb
+ExternalProject_Add(
+        dep_stb
+        GIT_REPOSITORY "https://github.com/nothings/stb"
+        GIT_TAG "master"
+        GIT_SHALLOW 1
+        UPDATE_COMMAND ""
+        PATCH_COMMAND ""
+        CONFIGURE_COMMAND ""
+        BUILD_COMMAND ""
+        TEST_COMMAND ""
+        INSTALL_COMMAND ${CMAKE_COMMAND} -E copy
+        ${PROJECT_BINARY_DIR}/dep_stb-prefix/src/dep_stb/stb_image.h
+        ${DEP_INSTALL_DIR}/include/stb/stb_image.h
+)
+set(DEP_LIST ${DEP_LIST} dep_stb)
