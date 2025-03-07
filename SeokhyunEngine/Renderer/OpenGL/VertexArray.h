@@ -22,7 +22,7 @@ public:
 
     void bind() const;
 
-    void setAttrib(uint attribIndex, int count, uint type, bool normalized, int stride, uint64_t offset) const;
+    void setAttrib(unsigned int attribIndex, int count, unsigned int type, bool normalized, int stride, uint64_t offset) const;
     void disableAttrib(int attribIndex) const;
 };
 

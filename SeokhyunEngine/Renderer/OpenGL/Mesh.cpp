@@ -36,7 +36,7 @@ Mesh *Mesh::CreateSquare()
         glm::vec3( 0.5f, -0.5f, 0.0f)
     };
 
-    std::vector<uint> recIndic =
+    std::vector<unsigned int> recIndic =
     {
         0, 1, 2,
         2, 1, 3

@@ -134,7 +134,7 @@ bool WindowsWindow::Update()
     glEnable(GL_DEPTH_TEST);
     glEnable(GL_BLEND);
 
-    glfwSwapBuffers(m_handle);
+    glfwPollEvents();
 
     return !glfwWindowShouldClose(m_handle);
 }

@@ -6,6 +6,8 @@
 #include "Renderer/OpenGL/Buffer.h"
 #include "Renderer/OpenGL/VertexArray.h"
 
+#include <vector>
+
 class Mesh
 {
 
@@ -14,10 +16,6 @@ private:
     GLuint m_primitiveType = GL_TRIANGLES;
 
     VertexArray *m_vertexArray;
-
-//    std::vector<Buffer*> m_buffer;
-//    Buffer* m_vertexBuffer;
-//    Buffer* m_indexBuffer;
 
     VertexBuffer* m_vertexBuffer;
     IndexBuffer * m_indexBuffer;

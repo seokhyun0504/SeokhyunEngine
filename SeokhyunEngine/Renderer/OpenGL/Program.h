@@ -4,6 +4,8 @@
 #include "common.h"
 #include "Renderer/OpenGL/Shader.h"
 
+#include <vector>
+
 class Program
 {
 
