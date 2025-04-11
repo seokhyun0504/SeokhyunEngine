@@ -30,10 +30,26 @@ add_executable(${PROJECT_NAME}
 
         SeokhyunEngine/Configuration/WindowMode.h
 
+        SeokhyunEngine/Event/Event.cpp SeokhyunEngine/Event/Event.h
+        SeokhyunEngine/Event/EventDispatcher.cpp SeokhyunEngine/Event/EventDispatcher.h
+        SeokhyunEngine/Event/EventManager.cpp SeokhyunEngine/Event/EventManager.h
+        SeokhyunEngine/Event/Input/KeyBoard/KeyBoardEvent.cpp SeokhyunEngine/Event/Input/KeyBoard/KeyBoardEvent.h
+        SeokhyunEngine/Event/Input/KeyBoard/KeyDownEvent.cpp SeokhyunEngine/Event/Input/KeyBoard/KeyDownEvent.h
+        SeokhyunEngine/Event/Input/KeyBoard/KeyUpEvent.cpp SeokhyunEngine/Event/Input/KeyBoard/KeyUpEvent.h
+        SeokhyunEngine/Event/Input/Mouse/MouseButtonEvent.cpp SeokhyunEngine/Event/Input/Mouse/MouseButtonEvent.h
+        SeokhyunEngine/Event/Input/Mouse/MouseDownEvent.cpp SeokhyunEngine/Event/Input/Mouse/MouseDownEvent.h
+        SeokhyunEngine/Event/Input/Mouse/MouseUpEvent.cpp SeokhyunEngine/Event/Input/Mouse/MouseUpEvent.h
+        SeokhyunEngine/Event/Input/Mouse/MouseMoveEvent.cpp SeokhyunEngine/Event/Input/Mouse/MouseMoveEvent.h
+        SeokhyunEngine/Event/Input/Mouse/MouseScrollEvent.cpp SeokhyunEngine/Event/Input/Mouse/MouseScrollEvent.h
+        SeokhyunEngine/Event/Window/WindowFocusEvent.cpp SeokhyunEngine/Event/Window/WindowFocusEvent.h
+        SeokhyunEngine/Event/Window/WindowMoveEvent.cpp SeokhyunEngine/Event/Window/WindowMoveEvent.h
+        SeokhyunEngine/Event/Window/WindowResizeEvent.cpp SeokhyunEngine/Event/Window/WindowResizeEvent.h
+        SeokhyunEngine/Event/Window/WindowStateEvent.cpp SeokhyunEngine/Event/Window/WindowStateEvent.h
+
         SeokhyunEngine/Math/AABB.cpp SeokhyunEngine/Math/AABB.h
 
         SeokhyunEngine/SeokhyunEngine.h SeokhyunEngine/common.h
-        SeokhyunEngine/Launcher.h SeokhyunEngine/Launcher.cpp
+        SeokhyunEngine/Launcher.cpp SeokhyunEngine/Launcher.h
         SeokhyunEngine/Application.cpp SeokhyunEngine/Application.h
 
         SeokhyunEngine/Platform/AppLauncher.cpp SeokhyunEngine/Platform/AppLauncher.h
@@ -44,7 +60,7 @@ add_executable(${PROJECT_NAME}
         ${SEOKHYUNENGINE_PLATFORM}
 
         SeokhyunEngine/Renderer/OpenGL/Buffer.cpp SeokhyunEngine/Renderer/OpenGL/Buffer.h
-        SeokhyunEngine/Renderer/OpenGL/Mesh.h SeokhyunEngine/Renderer/OpenGL/Mesh.cpp
+        SeokhyunEngine/Renderer/OpenGL/Mesh.cpp SeokhyunEngine/Renderer/OpenGL/Mesh.h
         SeokhyunEngine/Renderer/OpenGL/Program.cpp SeokhyunEngine/Renderer/OpenGL/Program.h
         SeokhyunEngine/Renderer/OpenGL/Shader.cpp SeokhyunEngine/Renderer/OpenGL/Shader.h
         SeokhyunEngine/Renderer/OpenGL/Texture.cpp SeokhyunEngine/Renderer/OpenGL/Texture.h

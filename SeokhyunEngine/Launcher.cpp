@@ -16,21 +16,3 @@ AppLauncher* Launcher::CreateLauncher()
     return nullptr;
     #endif
 }
-
-
-
-//
-//class WindowsAppLauncher;
-//class macOSAppLauncher;
-//
-//AppLauncher* Launcher::CreateLauncher()
-//{
-//
-//    switch (RuntimeInfo::RuntimeOS)
-//    {
-//        case RuntimeInfo::Windows: return new WindowsAppLauncher();
-//        case RuntimeInfo::macOS: return new macOSAppLauncher();
-//    }
-//
-//    return nullptr;
-//}

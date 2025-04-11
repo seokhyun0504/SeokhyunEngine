@@ -46,47 +46,81 @@ void Window::OnGLFWError(int error, const char* description)
 
 void Window::OnMouse(GLFWwindow *window, int button, int action, int mods)
 {
-
+    switch (action)
+    {
+        case GLFW_PRESS:
+        {
+            MouseDownEvent e(button);
+            EventManager::dispatch(e);
+            break;
+        }
+        case GLFW_RELEASE:
+        {
+            MouseUpEvent e(button);
+            EventManager::dispatch(e);
+            break;
+        }
+    }
 }
 
-void Window::OnMouseMove(GLFWwindow *window, double xoffset, double yoffset)
+void Window::OnMouseMove(GLFWwindow *window, double xpos, double ypos)
 {
-
+    MouseMoveEvent e((float) xpos, (float) ypos);
+    EventManager::dispatch(e);
 }
 
 void Window::OnScroll(GLFWwindow *window, double xoffset, double yoffset)
 {
-
+    MouseScrollEvent e((float) xoffset, (float) yoffset);
+    EventManager::dispatch(e);
 }
 
 void Window::OnKey(GLFWwindow *window, int key, int scancode, int action, int mods)
 {
-    if (key == GLFW_KEY_ESCAPE && action == GLFW_RELEASE)
-    {
-        glfwSetWindowShouldClose(window, true);
-    }
+//    if (key == GLFW_KEY_ESCAPE && action == GLFW_RELEASE)
+//    {
+//        glfwSetWindowShouldClose(window, true);
+//    }
+//
+//    if ((key == GLFW_KEY_F11 || key == GLFW_KEY_F) && action == GLFW_PRESS)
+//    {
+//        switch (m_windowMode)
+//        {
+//            case WindowMode::Windowed:
+//                setBorderless();
+//                break;
+//
+//            case WindowMode::Borderless:
+//                setFullScreen();
+//                break;
+//
+//            case WindowMode::Fullscreen:
+//                setWindowed();
+//                break;
+//
+//            default:
+//                std::cout << "[ERROR] Wrong WindowMode!" << std::endl;
+//                return;
+//        }
+//    }
 
-    if ((key == GLFW_KEY_F11 || key == GLFW_KEY_F) && action == GLFW_PRESS)
+
+    switch (action)
     {
-        switch (m_windowMode)
+        case GLFW_PRESS:
         {
-            case WindowMode::Windowed:
-                setBorderless();
-                break;
-
-            case WindowMode::Borderless:
-                setFullScreen();
-                break;
-
-            case WindowMode::Fullscreen:
-                setWindowed();
-                break;
-
-            default:
-                std::cout << "[ERROR] Wrong WindowMode!" << std::endl;
-                return;
+            KeyDownEvent e(key);
+            EventManager::dispatch(e);
+            break;
+        }
+        case GLFW_RELEASE:
+        {
+            KeyUpEvent e(key);
+            EventManager::dispatch(e);
+            break;
         }
     }
+
 }
 
 void Window::OnChar(GLFWwindow *window, unsigned int codepoint)
@@ -97,11 +131,17 @@ void Window::OnChar(GLFWwindow *window, unsigned int codepoint)
 void Window::OnWindowPos(GLFWwindow *window, int x, int y)
 {
     if (m_windowMode == WindowMode::Windowed) m_position.x = x; m_position.y = y;
+
+    WindowMoveEvent e(m_position.x, m_position.y);
+    EventManager::dispatch(e);
 }
 
 void Window::OnWindowSize(GLFWwindow *window, int width, int height)
 {
     m_resolution.x = width; m_resolution.y = height;
+
+    WindowResizeEvent e(width, height);
+    EventManager::dispatch(e);
 }
 
 void Window::OnWindowFramebufferSize(GLFWwindow *window, int width, int height)
@@ -117,6 +157,9 @@ void Window::OnWindowScale(GLFWwindow *window, float xscale, float yscale)
 void Window::OnWindowFocus(GLFWwindow *window, int focused)
 {
     m_focused = focused;
+
+    WindowFocusEvent e(focused);
+    EventManager::dispatch(e);
 }
 
 void Window::OnWindowRefresh(GLFWwindow *window)

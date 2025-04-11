@@ -4,6 +4,7 @@
 #include "common.h"
 
 #include "Configuration/WindowMode.h"
+#include "Event/EventManager.h"
 #include "RuntimePlatform.h"
 #include "WindowHandler.h"
 #include "Utility/Resolution.h"
@@ -46,7 +47,7 @@ protected:
     virtual void OnGLFWError                (int error, const char* description);
 
     virtual void OnMouse                    (GLFWwindow *window, int button, int action, int mods);
-    virtual void OnMouseMove                (GLFWwindow *window, double xoffset, double yoffset);
+    virtual void OnMouseMove                (GLFWwindow *window, double xpos, double ypos);
     virtual void OnScroll                   (GLFWwindow *window, double xoffset, double yoffset);
     virtual void OnKey                      (GLFWwindow *window, int key, int scancode, int action, int mods);
     virtual void OnChar                     (GLFWwindow *window, unsigned int codepoint);
@@ -81,6 +82,8 @@ public:
     virtual glm::ivec2 getPosition()    { return m_position;   }
 
     virtual std::string getTitle() { return m_title; }
+
+    virtual WindowMode getWindowMode() { return m_windowMode; }
 
 
     virtual void setMonitor()                   = 0;

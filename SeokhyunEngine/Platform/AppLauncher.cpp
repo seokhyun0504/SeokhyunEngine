@@ -1,5 +1,8 @@
 #include "AppLauncher.h"
 
+#include "Application.h"
+#include "Window.h"
+
 AppLauncher::AppLauncher() : m_window(nullptr)
 {
 
